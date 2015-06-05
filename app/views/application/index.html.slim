@@ -1,0 +1,8 @@
+table
+  -@tweets.each do |t|
+    tr
+      td =t.screen_name
+      td =t.hashtags.join(',')
+      td =t.text
+      td =link_to 'link', t.url
+
