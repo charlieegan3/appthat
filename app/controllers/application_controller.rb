@@ -6,4 +6,9 @@ class ApplicationController < ActionController::Base
   def index
     @tweets = Tweet.all.order(created_at: 'DESC')
   end
+
+  def flag
+    Tweet.find(params[:id]).toggle!(:flagged)
+    redirect_to :back
+  end
 end

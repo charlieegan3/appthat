@@ -1,5 +1,14 @@
 require_relative '../../config/environment'
 
+def tags(tweet)
+  OTS.parse(tweet.text)
+    .keywords.map { |t| t.gsub(/\W+/, '') }
+    .reject(&:empty?)
+    .concat(tweet.hashtags)
+    .map(&:downcase)
+    .uniq
+end
+
 task :collect do
   exiting_count = Tweet.count
 
@@ -16,13 +25,14 @@ task :collect do
 
   tweets.reject! { |t| t.reply? || t.retweet? || t.media? || t.uris? || t.user_mentions? }
   tweets.reject! { |t| t.text.match(/don'?t need/) }
+  tweets.reject! { |t| t.text[0, 2] == 'RT' }
   tweets.select! { |t| t.text.match(/want|need|wish/) }
 
   tweets.each do |t|
     Tweet.create(url: t.url.to_s,
                  screen_name: t.user.screen_name,
                  text: t.text,
-                 hashtags: t.hashtags.map {|x|x.text})
+                 tags: tags(t))
   end
   puts "saved #{Tweet.count - exiting_count} tweets"
 end

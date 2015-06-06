@@ -48,3 +48,4 @@ end
 gem 'rails_12factor', group: :production
 gem 'twitter'
 gem 'slim'
+gem 'ots'
