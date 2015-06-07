@@ -3,7 +3,8 @@
 }
 
 .flagged {
-  opacity: 0.3;
+  opacity: 0.4;
+  background-color: Orange;
 }
 
 p {
