@@ -23,10 +23,15 @@ task :collect do
   tweets += client.search('"an app to"', result_type: "recent").take(15)
   tweets += client.search('"an app for"', result_type: "recent").take(15)
 
+  tweets.select! { |t| t.text.downcase.match(/want|need|wish/) }
   tweets.reject! { |t| t.reply? || t.retweet? || t.media? || t.uris? || t.user_mentions? }
-  tweets.reject! { |t| t.text.match(/don'?t need/) }
+  tweets.reject! { |t| t.text.downcase.match(/don'?t need/) }
+  tweets.reject! { |t| t.text.downcase.match(/there'?s?( is)? an app/) }
+  tweets.reject! { |t| t.text.downcase.include?('@') }
+  tweets.reject! { |t| t.text.downcase.include?('if you need an app') }
+  tweets.reject! { |t| t.text.downcase.include?('why would i') }
+  tweets.reject! { |t| t.text.downcase.include?('on an app') }
   tweets.reject! { |t| t.text[0, 2] == 'RT' }
-  tweets.select! { |t| t.text.match(/want|need|wish/) }
 
   tweets.each do |t|
     Tweet.create(url: t.url.to_s,
