@@ -27,6 +27,10 @@ task :collect do
   tweets.reject! { |t| t.reply? || t.retweet? || t.media? || t.uris? || t.user_mentions? }
   tweets.reject! { |t| t.text.downcase.match(/don'?t need/) }
   tweets.reject! { |t| t.text.downcase.match(/there'?s?( is)? an app/) }
+  tweets.reject! { |t| t.text.downcase.match(/if (you|u) need an app/) }
+  tweets.reject! { |t| t.text.downcase.match(/(why|if)\w+need an/) }
+  tweets.reject! { |t| t.text.match(/([A-Z]+ ?){2,}/) }
+  tweets.reject! { |t| t.text.include?(' u ') }
   tweets.reject! { |t| t.text.downcase.include?('@') }
   tweets.reject! { |t| t.text.downcase.include?('if you need an app') }
   tweets.reject! { |t| t.text.downcase.include?('why would i') }
