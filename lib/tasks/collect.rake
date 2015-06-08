@@ -4,7 +4,7 @@ def tags(tweet)
   OTS.parse(tweet.text)
     .keywords.map { |t| t.gsub(/\W+/, '') }
     .reject(&:empty?)
-    .concat(tweet.hashtags)
+    .concat(tweet.hashtags.map(&:text))
     .map(&:downcase)
     .uniq
 end
