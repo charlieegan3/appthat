@@ -24,10 +24,12 @@ task :collect do
   tweets += client.search('"an app for"', result_type: "recent").take(15)
 
   tweets.select! { |t| t.text.downcase.match(/(want|need|wish)(\w| )* an app/) }
+
   tweets.reject! { |t| t.reply? || t.retweet? || t.media? || t.uris? || t.user_mentions? }
-  tweets.reject! { |t| t.text.downcase.match(/don'?t need/) }
+  tweets.reject! { |t| t.text.downcase.match(/(don'?t|didn'?t|you) (want|need)/) }
   tweets.reject! { |t| t.text.downcase.match(/there'?s?( is)? an app/) }
-  tweets.reject! { |t| t.text.downcase.match(/if (you|u) (need|need) an app/) }
+  tweets.reject! { |t| t.text.downcase.match(/have an app/) }
+  tweets.reject! { |t| t.text.downcase.match(/(if|when) (you|u) (need|want) an app/) }
   tweets.reject! { |t| t.text.downcase.match(/(why|if)\w+need an/) }
   tweets.reject! { |t| t.text.match(/([A-Z]+ ?){2,}/) }
   tweets.reject! { |t| t.text.include?(' u ') }
