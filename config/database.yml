@@ -10,7 +10,7 @@ development:
   database: appthat_development
   pool: 5
   timeout: 5000
-development:
+test:
   adapter: postgresql
   encoding: unicode
   database: appthat_test
