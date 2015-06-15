@@ -1,3 +1,7 @@
+body {
+  font-family: sans-serif;
+}
+
 .tweet {
   border-bottom: 1px solid LightGrey;
 }
@@ -15,5 +19,10 @@ p {
 .details {
   font-size: 15px;
   color: DarkGrey;
+}
+
+.warning {
+  color: red;
+  font-weight: bold;
 }
 

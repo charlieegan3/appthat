@@ -51,3 +51,18 @@ task :collect do
   end
   puts "saved #{Tweet.count - exiting_count} tweets"
 end
+
+task :classify do
+  c = Classifier::Bayes.new('accept', 'reject')
+  Tweet.all.each do |t|
+    if t.flagged
+      c.train_reject(t.text)
+    else
+      c.train_accept(t.text)
+    end
+  end
+
+  Tweet.all.each do |t|
+    t.update_attribute(:to_flag, (c.classify(t.text) == 'Accept')? false : true)
+  end
+end

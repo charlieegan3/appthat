@@ -49,3 +49,6 @@ gem 'rails_12factor', group: :production
 gem 'twitter'
 gem 'slim'
 gem 'ots'
+gem 'classifier'
+gem 'fast-stemmer'
+gem 'jaccard'
