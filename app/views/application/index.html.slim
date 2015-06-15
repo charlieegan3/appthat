@@ -1,6 +1,6 @@
 p ="#{@tweets.size} tweets, #{@tweets.select(&:flagged).size} flagged"
 -@tweets.each do |t|
-  div.tweet class=('flagged' if t.is_flagged?)
+  div.tweet id=(t.id) class=('flagged' if t.is_flagged?)
     -if t.is_flagged? == true && t.to_flag == false
       p.warning Classifier Mismatch
       p ="flagged: #{t.is_flagged?}"

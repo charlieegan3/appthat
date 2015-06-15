@@ -8,7 +8,8 @@ class ApplicationController < ActionController::Base
   end
 
   def flag
-    Tweet.find(params[:id]).toggle!(:flagged)
-    redirect_to :back
+    t = Tweet.find(params[:id])
+    t.toggle!(:flagged)
+    redirect_to "/##{params[:id]}"
   end
 end
