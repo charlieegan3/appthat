@@ -1,4 +1,6 @@
 class Tweet < ActiveRecord::Base
+  acts_as_taggable
+
   serialize :tags, Array
   validates_uniqueness_of :url
   validates_uniqueness_of :text
@@ -23,5 +25,9 @@ class Tweet < ActiveRecord::Base
     else
       return self.flagged
     end
+  end
+
+  def self.unchanneled
+    tagged_with(Channel.all.pluck(:tags).reduce(:+), exclude: true).order(created_at: 'DESC')
   end
 end

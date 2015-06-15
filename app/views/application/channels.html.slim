@@ -1,0 +1,24 @@
+div.channels
+  div.channel
+    strong Unchanneled
+    -Tweet.unchanneled.each do |t|
+      -if t.created_at > 12.hours.ago
+        -status = 'new'
+      -elsif t.created_at > 1.days.ago
+        -status = 'recent'
+      div class=(status) class=('flagged' if t.is_flagged?)
+        =t.text
+        br
+        =link_to 'flag', "flag/#{t.id}"
+  -@channels.each do |c|
+    div.channel
+      strong =c.title
+      -c.latest.each do |t|
+        -if t.created_at > 12.hours.ago
+          -status = 'new'
+        -elsif t.created_at > 1.days.ago
+          -status = 'recent'
+        div class=(status) class=('flagged' if t.is_flagged?)
+          =t.text
+          br
+          =link_to 'flag', "flag/#{t.id}"

@@ -26,3 +26,40 @@ p {
   font-weight: bold;
 }
 
+.old {
+  color: LightGrey;
+}
+
+/* channels */
+.channels
+{
+  white-space: nowrap;
+  overflow: scroll;
+}
+
+.channel
+{
+  vertical-align: top;
+  display: inline-block;
+  white-space: normal;
+  max-height: 97vh;
+  overflow-y: scroll;
+  width: 350px;
+  padding: 5px;
+  margin: 2px;
+  background-color: LightGrey;
+}
+
+.channel div {
+  background-color: white;
+  padding: 3px;
+  margin-bottom: 5px;
+}
+
+div.new {
+  background-color: YellowGreen;
+}
+
+div.recent {
+  background-color: Orange;
+}

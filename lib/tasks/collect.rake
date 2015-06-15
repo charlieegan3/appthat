@@ -7,6 +7,7 @@ def tags(tweet)
     .concat(tweet.hashtags.map(&:text))
     .map(&:downcase)
     .uniq
+    .join(',')
 end
 
 task :collect do
@@ -26,9 +27,9 @@ task :collect do
   tweets.select! { |t| t.text.downcase.match(/(want|need|wish)(\w| )* an app/) }
 
   tweets.reject! { |t| t.reply? || t.retweet? || t.media? || t.uris? || t.user_mentions? }
-  tweets.reject! { |t| t.text.downcase.match(/fuck|shit|drunk|bitch|lol|douche|glue|alcohol|piss|nigga|ppl/) }
+  tweets.reject! { |t| t.text.downcase.match(/fuck|shit|drunk|bitch|lol|douche|glue|drug|alcohol|piss|nigga|ppl/) }
   tweets.reject! { |t| t.text.downcase.match(/\s+ex\s+/) }
-  tweets.reject! { |t| t.text.downcase.match(/i\s/) }
+  tweets.reject! { |t| t.text.downcase.match(/\si\s/) }
 
   tweets.reject! { |t| t.text.downcase.match(/(don'?t|didn'?t|you) (want|need)/) }
   tweets.reject! { |t| t.text.downcase.match(/there'?s?( is)? an app/) }
@@ -44,10 +45,11 @@ task :collect do
   tweets.reject! { |t| t.text[0, 2] == 'RT' }
 
   tweets.each do |t|
-    Tweet.create(url: t.url.to_s,
+    t = Tweet.new(url: t.url.to_s,
                  screen_name: t.user.screen_name,
-                 text: t.text,
-                 tags: tags(t))
+                 text: t.text)
+    t.tag_list = tags(t)
+    t.save
   end
   puts "saved #{Tweet.count - exiting_count} tweets"
 end
@@ -64,5 +66,17 @@ task :classify do
 
   Tweet.all.each do |t|
     t.update_attribute(:to_flag, (c.classify(t.text) == 'Accept')? false : true)
+  end
+end
+
+task :reset_tags do
+  Tweet.all.each do |t|
+    t.tag_list = OTS.parse(t.text)
+      .keywords.map { |t| t.gsub(/\W+/, '') }
+      .reject(&:empty?)
+      .map(&:downcase)
+      .uniq
+      .join(',')
+   t.save
   end
 end

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'application#index'
+  get '/channels' => 'application#channels'
   get 'flag/:id' => 'application#flag'
 
   # Example of regular route:

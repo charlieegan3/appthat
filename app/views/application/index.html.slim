@@ -5,7 +5,8 @@ p ="#{@tweets.size} tweets, #{@tweets.select(&:flagged).size} flagged"
       p.warning Classifier Mismatch
       p ="flagged: #{t.is_flagged?}"
       p ="recommended: #{t.to_flag}"
-    p =t.text.html_safe
+    p class=((t.created_at < 12.hours.ago) ? 'old' : nil)
+       =t.text.html_safe
     p.details
       strong =distance_of_time_in_words(Time.now, t.created_at)
       |&nbsp;ago by&nbsp;

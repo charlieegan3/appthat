@@ -7,9 +7,13 @@ class ApplicationController < ActionController::Base
     @tweets = Tweet.all.order(created_at: 'DESC')
   end
 
+  def channels
+    @channels = Channel.all
+  end
+
   def flag
     t = Tweet.find(params[:id])
     t.toggle!(:flagged)
-    redirect_to "/##{params[:id]}"
+    redirect_to :back
   end
 end
