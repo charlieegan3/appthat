@@ -1,10 +1,10 @@
 require_relative '../../config/environment'
 
-def tags(tweet)
+def tags(tweet, hashtags)
   OTS.parse(tweet.text)
     .keywords.map { |t| t.gsub(/\W+/, '') }
     .reject(&:empty?)
-    .concat(tweet.hashtags.map(&:text))
+    .concat(hashtags.map(&:text))
     .map(&:downcase)
     .uniq
     .join(',')
@@ -45,11 +45,11 @@ task :collect do
   tweets.reject! { |t| t.text[0, 2] == 'RT' }
 
   tweets.each do |t|
-    t = Tweet.new(url: t.url.to_s,
+    tweet = Tweet.new(url: t.url.to_s,
                  screen_name: t.user.screen_name,
                  text: t.text)
-    t.tag_list = tags(t)
-    t.save
+    tweet.tag_list = tags(tweet, t.hashtags)
+    tweet.save
   end
   puts "saved #{Tweet.count - exiting_count} tweets"
 end
@@ -66,17 +66,5 @@ task :classify do
 
   Tweet.all.each do |t|
     t.update_attribute(:to_flag, (c.classify(t.text) == 'Accept')? false : true)
-  end
-end
-
-task :reset_tags do
-  Tweet.all.each do |t|
-    t.tag_list = OTS.parse(t.text)
-      .keywords.map { |t| t.gsub(/\W+/, '') }
-      .reject(&:empty?)
-      .map(&:downcase)
-      .uniq
-      .join(',')
-   t.save
   end
 end
