@@ -26,6 +26,10 @@ task :collect do
   tweets.select! { |t| t.text.downcase.match(/(want|need|wish)(\w| )* an app/) }
 
   tweets.reject! { |t| t.reply? || t.retweet? || t.media? || t.uris? || t.user_mentions? }
+  tweets.reject! { |t| t.text.downcase.match(/fuck|shit|drunk|bitch|lol|douche|glue|alcohol|piss|nigga|ppl/) }
+  tweets.reject! { |t| t.text.downcase.match(/\s+ex\s+/) }
+  tweets.reject! { |t| t.text.downcase.match(/i\s/) }
+
   tweets.reject! { |t| t.text.downcase.match(/(don'?t|didn'?t|you) (want|need)/) }
   tweets.reject! { |t| t.text.downcase.match(/there'?s?( is)? an app/) }
   tweets.reject! { |t| t.text.downcase.match(/have an app/) }
