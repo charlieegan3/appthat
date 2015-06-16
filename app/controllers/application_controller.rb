@@ -4,10 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def index
-    @tweets = Tweet.all.order(created_at: 'DESC')
-  end
-
-  def channels
     @channels = Channel.all.sort_by(&:recent_activity).reverse
   end
 

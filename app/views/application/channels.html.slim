@@ -1,4 +1,0 @@
-div.channels
-  =render 'channel', title: 'Uncategorized', tweets: Tweet.unchanneled
-  -@channels.each do |c|
-    =render 'channel', title: c.title, tweets: c.tweets

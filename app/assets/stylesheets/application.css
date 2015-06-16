@@ -3,35 +3,25 @@ body {
   background-color: #303030;
 }
 
-.tweet {
-  border-bottom: 1px solid LightGrey;
-}
-
-.flagged {
-  opacity: 0.4;
-  background-color: Orange;
+h1 {
+  color: black;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1em;
+  margin-top: 3px;
+  margin-bottom: 10px;
 }
 
 p {
   margin: 0px;
-  font-size: 17px;
 }
 
-.details {
-  font-size: 15px;
-  color: DarkGrey;
+a {
+  text-decoration: none;
+  color: black;
 }
 
-.warning {
-  color: red;
-  font-weight: bold;
-}
 
-.old {
-  color: LightGrey;
-}
-
-/* channels */
 .channels {
   white-space: nowrap;
   overflow: scroll;
@@ -50,19 +40,30 @@ p {
   background-color: #FAFAFA;
 }
 
-.channel p {
-  color: black;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.channel div {
-  font-family: Courier, monospace;
+.tweet {
   background-color: white;
   padding: 7px;
   margin-bottom: 10px;
   border-radius: 3px;
   border: 2px solid LightGrey;
+}
+
+.text {
+  font-family: Courier, monospace;
+}
+
+.details {
+  font-size: 0.8em;
+  text-align: right;
+  margin-top: 5px;
+}
+
+.details a {
+  background-color: red;
+  border-radius: 2px;
+  color: white;
+  padding: 1px 3px;
+  font-weight: bold;
 }
 
 div.new {
