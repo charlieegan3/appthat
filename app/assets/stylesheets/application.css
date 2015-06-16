@@ -1,5 +1,6 @@
 body {
   font-family: sans-serif;
+  background-color: #303030;
 }
 
 .tweet {
@@ -31,35 +32,43 @@ p {
 }
 
 /* channels */
-.channels
-{
+.channels {
   white-space: nowrap;
   overflow: scroll;
 }
 
-.channel
-{
+.channel {
   vertical-align: top;
   display: inline-block;
   white-space: normal;
   max-height: 97vh;
   overflow-y: scroll;
-  width: 350px;
-  padding: 5px;
-  margin: 2px;
-  background-color: LightGrey;
+  width: 330px;
+  padding: 10px;
+  margin: 2px 5px;
+  border-radius: 3px;
+  background-color: #FAFAFA;
+}
+
+.channel p {
+  color: black;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .channel div {
+  font-family: Courier, monospace;
   background-color: white;
-  padding: 3px;
-  margin-bottom: 5px;
+  padding: 7px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  border: 2px solid LightGrey;
 }
 
 div.new {
-  background-color: YellowGreen;
+  border: 2px solid OrangeRed;
 }
 
 div.recent {
-  background-color: Orange;
+  background-color: rgba(154,205,50,0.3);
 }
