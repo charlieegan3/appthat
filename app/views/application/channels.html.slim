@@ -13,7 +13,7 @@ div.channels
   -@channels.each do |c|
     div.channel
       strong =c.title
-      -c.latest.each do |t|
+      -c.tweets.each do |t|
         -if t.created_at > 12.hours.ago
           -status = 'new'
         -elsif t.created_at > 1.days.ago

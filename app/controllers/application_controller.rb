@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def channels
-    @channels = Channel.all
+    @channels = Channel.all.sort_by(&:recent_activity).reverse
   end
 
   def flag
