@@ -66,10 +66,14 @@ a {
   font-weight: bold;
 }
 
-div.new {
+.new {
   border: 2px solid OrangeRed;
 }
 
-div.recent {
+.recent {
   background-color: rgba(154,205,50,0.3);
+}
+
+.flagged {
+  opacity: 0.5;
 }
