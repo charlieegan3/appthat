@@ -19,14 +19,6 @@ class Tweet < ActiveRecord::Base
     text.downcase.gsub(/[^ \w]/, '').split()
   end
 
-  def is_flagged?
-    if self.flagged.nil?
-      return false
-    else
-      return self.flagged
-    end
-  end
-
   def self.unchanneled
     tagged_with(Channel.all.pluck(:tags).reduce(:+), exclude: true).order(created_at: 'DESC')
   end

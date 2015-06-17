@@ -6,6 +6,6 @@ class Channel < ActiveRecord::Base
   end
 
   def recent_activity
-    tweets.where('created_at > ?', Time.now - 12.hours).size
+    tweets.where('created_at > ?', Time.now - 1.days).size
   end
 end

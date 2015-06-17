@@ -4,11 +4,8 @@ div.channel
     -status = ''
     -status += ' new' if t.created_at > 12.hours.ago
     -status += ' recent' if t.created_at > 1.days.ago
-    -status += ' flagged' if t.is_flagged?
     div.tweet class=(status.strip)
       =link_to(t.url) do
         p.text =t.text
       p.details
         =distance_of_time_in_words(t.created_at, Time.zone.now)
-        |&nbsp;
-        =link_to 'flag', "flag/#{t.id}"

@@ -49,7 +49,5 @@ gem 'rails_12factor', group: :production
 gem 'twitter'
 gem 'slim'
 gem 'ots'
-gem 'classifier'
-gem 'fast-stemmer'
 gem 'jaccard'
 gem 'acts-as-taggable-on', '~> 3.4'
