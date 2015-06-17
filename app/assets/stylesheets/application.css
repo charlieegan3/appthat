@@ -28,16 +28,25 @@ a {
 }
 
 .channel {
+  max-height: 96vh;
+  overflow-y: scroll;
   vertical-align: top;
   display: inline-block;
   white-space: normal;
-  max-height: 97vh;
-  overflow-y: scroll;
   width: 330px;
   padding: 10px;
   margin: 2px 5px;
   border-radius: 3px;
   background-color: #FAFAFA;
+  border-top: 5px solid #FAFAFA;
+}
+
+.latest {
+  border-top: 5px solid #A8C4F5;
+}
+
+.uncategorized {
+  border-top: 5px solid #FFA07D;
 }
 
 .tweet {
@@ -45,7 +54,7 @@ a {
   padding: 7px;
   margin-bottom: 10px;
   border-radius: 3px;
-  border: 2px solid LightGrey;
+  border: 1px solid rgba(1,1,1,0.5);
 }
 
 .text {
@@ -66,14 +75,10 @@ a {
   font-weight: bold;
 }
 
-.new {
-  border: 2px solid OrangeRed;
-}
-
 .recent {
-  background-color: rgba(154,205,50,0.3);
+  border-left: 10px solid YellowGreen;
 }
 
-.flagged {
-  opacity: 0.5;
+.new {
+  border-left: 10px solid OrangeRed;
 }

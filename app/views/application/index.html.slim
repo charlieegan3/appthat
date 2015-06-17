@@ -1,4 +1,5 @@
 div.channels
-  =render 'channel', title: 'Uncategorized', tweets: Tweet.unchanneled
+  =render 'channel', title: 'Recent', tweets: Tweet.latest, channel_class: 'latest'
+  =render 'channel', title: 'Uncategorized', tweets: Tweet.unchanneled, channel_class: 'uncategorized'
   -@channels.each do |c|
-    =render 'channel', title: c.title, tweets: c.tweets
+    =render 'channel', title: c.title, tweets: c.tweets, channel_class: nil

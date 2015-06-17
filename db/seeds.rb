@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 Channel.delete_all
 Channel.create(title: 'Social', tags: %w(feed timeline people subtweets muted blocked fb ig twitter snapchat stories tweets social instagram post tinder messages follow blocks friends tweet facebook insta unfollow posts facetime contacts relationship share friend talking sender unfollows block))
 Channel.create(title: 'Media', tags: %w(pictures photos movie collage music media videos song ig instagram picture songs photo listen video pic library snap shazam listening sound tv pics tune netflix stream gifs youtube selfies cinema spoilers))
@@ -23,7 +16,5 @@ Channel.create(title: 'Sleep', tags: %w(alarm sleeping woke sleep bed))
 Channel.create(title: 'Notifications', tags: %w(notifies notify alerts alert reminder remind))
 Channel.create(title: 'Productivity', tags: %w(productive productivity alarms alarm todo organize))
 Channel.create(title: 'Language & Translation', tags: %w(translates translate language))
-Channel.create(title: 'Sport', tags: %w(baseball football soccer tennis))
 Channel.create(title: 'Thinking & Thoughts', tags: %w(mood thoughts decisions meditate thinking think emotions))
 Channel.create(title: 'Family', tags: %w(kids baby family children))
-Channel.create(title: 'Games', tags: %w(player play callofduty))

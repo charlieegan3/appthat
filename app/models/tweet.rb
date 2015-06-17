@@ -22,4 +22,8 @@ class Tweet < ActiveRecord::Base
   def self.unchanneled
     tagged_with(Channel.all.pluck(:tags).reduce(:+), exclude: true).order(created_at: 'DESC')
   end
+
+  def self.latest
+    where('created_at > ?', Time.now - 1.days).order(created_at: 'DESC')
+  end
 end
