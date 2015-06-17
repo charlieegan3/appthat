@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150617142824) do
+ActiveRecord::Schema.define(version: 20150617213203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 20150617142824) do
     t.datetime "updated_at", null: false
     t.string   "title"
   end
+
+  create_table "flags", force: :cascade do |t|
+    t.string   "ip"
+    t.integer  "tweet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "flags", ["tweet_id"], name: "index_flags_on_tweet_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
@@ -52,4 +61,5 @@ ActiveRecord::Schema.define(version: 20150617142824) do
     t.datetime "updated_at",  null: false
   end
 
+  add_foreign_key "flags", "tweets"
 end

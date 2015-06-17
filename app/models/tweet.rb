@@ -1,4 +1,6 @@
 class Tweet < ActiveRecord::Base
+  has_many :flags
+
   acts_as_taggable
 
   serialize :tags, Array

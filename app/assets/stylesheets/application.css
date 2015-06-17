@@ -86,3 +86,20 @@ a {
 .new {
   border-left: 10px solid OrangeRed;
 }
+
+.flag-button {
+  background-color: Orange;
+  border: none;
+  font: inherit;
+  padding: 1px 6px;
+  border-radius: 3px;
+  border: 1px solid Grey;
+  cursor: pointer;
+  font-size: 1.5em;
+}
+
+.flagged {
+  background-color: red;
+  border: 1px solid black;
+  color: white;
+}

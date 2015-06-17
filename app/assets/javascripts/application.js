@@ -14,3 +14,15 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+$("document").ready(function(){
+  $(".flag-button").click(function() {
+    $.ajax({
+      type: 'POST',
+      url: '/flag',
+      data: { id: $(this).attr("data-id") }
+    });
+    $(this).toggleClass("flagged");
+  });
+});
