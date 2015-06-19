@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   end
 
   def search
-    tags = params[:query].downcase.gsub(/\W|\s/, '').split(/\s+/)
+    tags = params[:query].downcase.split(/\W+/)
     render json: Tweet.search(tags).map { |t| t.as_json(only: [:id, :url, :screen_name, :text, :created_at]) }
   end
 

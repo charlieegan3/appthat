@@ -63,7 +63,8 @@ $("document").ready(function(){
   $(".flag-button").click(post_flag);
 
   $('#search').on('input',function(e){
-    query = "search?query=" + $(this).val();
+    query = "search?query=" + $(this).val().replace(/\s+/g, '+');
+    console.log(query);
     $("#results").html("");
     $.getJSON( query, function( data ) {
       var items = [];
