@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Galindo);
+
 body {
   font-family: sans-serif;
   background-color: #303030;
@@ -30,12 +32,13 @@ a {
   text-align: right;
   color: white;
   font-size: 4em;
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Galindo', cursive;
 }
 
 .header p {
   color: LightGrey;
   font-family: monospace;
+  font-size: 0.9em;
 }
 
 .channels {
@@ -83,7 +86,7 @@ a {
 }
 
 .search input {
-  width: 300px;
+  width: 297px;
   padding: 5px;
   font-size: 1.5em;
   border-radius: 3px;
