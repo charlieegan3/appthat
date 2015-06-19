@@ -7,6 +7,7 @@ class Flag < ActiveRecord::Base
       create(tweet: tweet, ip: ip)
     else
       flags.delete_all
+      Tweet.reset_counters(tweet.id, :flags)
     end
   end
 end
