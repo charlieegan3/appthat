@@ -30,22 +30,27 @@ a {
   height: 98vh;
 }
 
-.channel {
+.channel, .divider {
   max-height: 96vh;
   overflow-y: scroll;
   vertical-align: top;
   display: inline-block;
   white-space: normal;
-  width: 330px;
-  padding: 10px;
   margin: 2px 5px;
   border-radius: 3px;
+}
+
+.channel {
+  width: 330px;
+  padding: 10px;
   background-color: #FAFAFA;
   border-top: 5px solid #FAFAFA;
 }
 
-.channel:nth-child(2) {
-  margin-right: 20px;
+.divider {
+  padding: 2px;
+  height: 100%;
+  background-color: Grey;
 }
 
 .latest {
@@ -105,18 +110,18 @@ a {
 }
 
 .flag-button {
-  background-color: Orange;
+  background-color: white;
   border: none;
   font: inherit;
-  padding: 1px 6px;
+  padding: 0px 6px;
   border-radius: 3px;
   border: 1px solid Grey;
   cursor: pointer;
-  font-size: 1.5em;
+  font-size: 1.2em;
+  color: DarkGrey;
 }
 
 .flagged {
-  background-color: red;
-  border: 1px solid black;
-  color: white;
+  border: 1px solid DarkGrey;
+  color: red;
 }
