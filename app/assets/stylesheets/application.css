@@ -46,7 +46,7 @@ a {
 }
 
 .channel, .divider {
-  max-height: 96vh;
+  max-height: 95vh;
   overflow-y: scroll;
   vertical-align: top;
   display: inline-block;
@@ -63,9 +63,10 @@ a {
 }
 
 .divider {
-  padding: 2px;
+  padding: 1px;
   height: 100%;
-  background-color: Grey;
+  border-radius: 0px;
+  background-color: DimGray;
 }
 
 .home {
