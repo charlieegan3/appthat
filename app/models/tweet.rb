@@ -22,8 +22,8 @@ class Tweet < ActiveRecord::Base
   end
 
   def self.search(tags)
-    tagged_with(tags, any: true)
-      .select(:id, :url, :screen_name, :text)
+    tagged_with(tags)
+      .select(:id, :url, :screen_name, :text, :created_at)
       .limit(100)
       .order(created_at: 'DESC')
   end
