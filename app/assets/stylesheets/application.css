@@ -80,11 +80,16 @@ a {
 }
 
 .recent {
-  border-left: 10px solid YellowGreen;
+  border-left: 8px solid YellowGreen;
 }
 
 .new {
-  border-left: 10px solid OrangeRed;
+  -webkit-box-shadow: 0px 0px 2px 1px Orange;
+  -moz-box-shadow: 0px 0px 2px 1px Orange;
+  box-shadow: 0px 0px 2px 1px Orange;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
 }
 
 .flag-button {
