@@ -6,7 +6,7 @@ div.channel class=(channel_class)
     -status += ' recent' if t.created_at > 1.days.ago
     div.tweet class=(status.strip)
       =link_to(t.url) do
-        p.text =t.text
+        p.text =t.text.html_safe
       p.details
         =distance_of_time_in_words(t.created_at, Time.zone.now)
         |&nbsp;ago
