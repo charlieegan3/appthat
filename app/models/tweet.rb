@@ -22,10 +22,18 @@ class Tweet < ActiveRecord::Base
   end
 
   def self.unchanneled
-    tagged_with(Channel.all.pluck(:tags).reduce(:+), exclude: true).order(created_at: 'DESC')
+    unflagged.tagged_with(Channel.all.pluck(:tags).reduce(:+), exclude: true).order(created_at: 'DESC')
   end
 
   def self.latest
-    where('created_at > ?', Time.now - 1.days).order(created_at: 'DESC')
+    unflagged.where('created_at > ?', Time.now - 1.days).order(created_at: 'DESC')
+  end
+
+  def self.unflagged
+    where('flags_count IS NULL or flags_count < 2')
+  end
+
+  def self.flagged
+    where('flags_count > 2')
   end
 end

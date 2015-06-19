@@ -44,12 +44,24 @@ a {
   border-top: 5px solid #FAFAFA;
 }
 
+.channel:nth-child(2) {
+  margin-right: 20px;
+}
+
 .latest {
   border-top: 5px solid #A8C4F5;
 }
 
 .uncategorized {
   border-top: 5px solid #FFA07D;
+}
+
+.rejected {
+  border-top: 5px solid red;
+}
+
+.rejected .flag-button {
+  display: none;
 }
 
 .tweet {

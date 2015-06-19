@@ -3,3 +3,4 @@ div.channels
   =render 'channel', title: 'Uncategorized', tweets: Tweet.unchanneled, channel_class: 'uncategorized'
   -@channels.each do |c|
     =render 'channel', title: c.title, tweets: c.tweets, channel_class: nil
+  =render 'channel', title: 'Flagged', tweets: Tweet.flagged, channel_class: 'rejected'
