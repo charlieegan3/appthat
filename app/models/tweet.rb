@@ -21,6 +21,13 @@ class Tweet < ActiveRecord::Base
     text.downcase.gsub(/[^ \w]/, '').split()
   end
 
+  def self.search(tags)
+    tagged_with(tags, any: true)
+      .select(:id, :url, :screen_name, :text)
+      .limit(100)
+      .order(created_at: 'DESC')
+  end
+
   def self.unchanneled
     unflagged.tagged_with(Channel.all.pluck(:tags).reduce(:+), exclude: true).order(created_at: 'DESC')
   end

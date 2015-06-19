@@ -22,6 +22,21 @@ a {
   color: black;
 }
 
+.header {
+  text-align: right;
+}
+
+.header h1 {
+  text-align: right;
+  color: white;
+  font-size: 4em;
+  font-family: 'Indie Flower', cursive;
+}
+
+.header p {
+  color: LightGrey;
+  font-family: monospace;
+}
 
 .channels {
   position: absolute;
@@ -51,6 +66,33 @@ a {
   padding: 2px;
   height: 100%;
   background-color: Grey;
+}
+
+.home {
+  border-top: none;
+  background: none;
+  padding: 0px;
+}
+
+.search {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #FAFAFA;
+  border-radius: 3px;
+}
+
+.search input {
+  width: 300px;
+  padding: 5px;
+  font-size: 1.5em;
+  border-radius: 3px;
+  border: 1px solid rgba(1,1,1,0.5);
+  font-family: monospace;
+}
+
+#results {
+  margin-top: 10px;
+  display: none;
 }
 
 .latest {

@@ -1,4 +1,12 @@
 div.channels
+  .channel.home
+    .header
+      h1 AppThat
+      p apps the world asked for
+    .search
+      input type="text" id='search' placeholder="search..."
+      div id=('results')
+  .divider
   =render 'channel', title: 'Recent', tweets: Tweet.latest, channel_class: 'latest'
   =render 'channel', title: 'Uncategorized', tweets: Tweet.unchanneled, channel_class: 'uncategorized'
   .divider
