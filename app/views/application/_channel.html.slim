@@ -8,9 +8,11 @@ div.channel class=(channel_class)
       =link_to(t.url) do
         p.text =t.text.html_safe
       p.details
-        =distance_of_time_in_words(t.created_at, Time.zone.now)
-        |&nbsp;ago
-        |&nbsp;
-        -flagged = t.flags.pluck(:ip).include?(request.remote_ip)
-        button.flag-button class=(flagged ? 'flagged' : nil) data-id=(t.id)
-          |⚑
+        span ="@#{t.screen_name}"
+        span
+          =distance_of_time_in_words(t.created_at, Time.zone.now)
+          |&nbsp;ago
+          |&nbsp;
+          -flagged = t.flags.pluck(:ip).include?(request.remote_ip)
+          button.flag-button class=(flagged ? 'flagged' : nil) data-id=(t.id)
+            |⚑

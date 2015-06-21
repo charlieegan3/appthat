@@ -50,12 +50,15 @@ function build_tweet_link(item) {
 function build_tweet_details(item) {
   var details = document.createElement('p');
   details.className = "details";
-  details.innerHTML = jQuery.timeago(item.created_at) + " ";
+  $(details).append("<span>@" + item.screen_name + "</span>")
+  var right = document.createElement('span');
+  $(right).append(jQuery.timeago(item.created_at) + " ");
   var flag_button = document.createElement('button');
   $(flag_button).attr({ "data-id": item.id, "class": "flag-button" });
   flag_button.innerHTML = "⚑";
   $(flag_button).click(post_flag);
-  $(details).append(flag_button);
+  $(right).append(flag_button);
+  $(details).append(right);
   return details;
 }
 

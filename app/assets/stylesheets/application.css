@@ -129,8 +129,8 @@ a {
 
 .details {
   font-size: 0.8em;
-  text-align: right;
   margin-top: 5px;
+  height: 17px;
   color: DarkGrey;
 }
 
@@ -140,6 +140,11 @@ a {
   color: white;
   padding: 1px 3px;
   font-weight: bold;
+}
+
+.details span:last-child {
+  margin-top: -5px;
+  float: right;
 }
 
 .recent {
