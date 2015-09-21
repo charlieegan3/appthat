@@ -4,7 +4,7 @@ div.channels
       h1 AppThat
       p the world has requested the following apps
     .search
-      input type="text" id='search' placeholder="search..."
+      input type="text" id='search' placeholder="search by keyword..."
       div id=('results')
   .divider
   =render 'channel', title: 'Recent', tweets: Tweet.latest, channel_class: 'latest'
