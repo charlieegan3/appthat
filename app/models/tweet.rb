@@ -29,7 +29,9 @@ class Tweet < ActiveRecord::Base
   end
 
   def self.unchanneled
-    unflagged.tagged_with(Channel.all.pluck(:tags).reduce(:+), exclude: true).order(created_at: 'DESC')
+    unflagged.tagged_with(Channel.all.pluck(:tags).reduce(:+), exclude: true)
+      .limit(300)
+      .order(created_at: 'DESC')
   end
 
   def self.latest
